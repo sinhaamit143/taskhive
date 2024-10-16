@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap');
+
+.active {
+    color: #0399fa !important;
+}
+
+.btn {
+    --bs-btn-border-width: 0px !important;
+}
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+

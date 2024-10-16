@@ -1,0 +1,55 @@
+.support-section {
+    margin-top: 20vh;
+}
+
+.support-section1 {
+    margin-top: 7vh;
+    margin-bottom: 15vh;
+}
+
+.support-head {
+    margin: 2rem auto;
+}
+
+.support-head h1 {
+    font-weight: 400;
+    color: #000;
+    margin-bottom: 1.5rem;
+}
+
+.support-head img {
+    width: 100%;
+}
+
+.support-body {
+    margin: 3rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.support-page-data h4 {
+    color: #000;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.support-page-data p {
+    text-align: justify;
+    line-height: 2.5rem;
+    font-size: 1.1rem;
+    margin-bottom: 0;
+}
+
+.support-page-data ul li {
+    text-align: justify;
+    line-height: 2.5rem;
+    font-size: 1.1rem;
+    margin-bottom: 0;
+}
+
+.support-page-data span a {
+    text-decoration: none;
+    color: #0399FA;
+    font-weight: 600;
+}
