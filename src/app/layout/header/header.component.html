@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-md container-fluid fixed-top" style="padding-top: 10px;padding-left: 100px;padding-right: 100px;">
-    <div class="container-fluid" >
+<nav class="navbar navbar-expand-md container-fluid fixed-top">
+    <div class="container navbar-custom" >
       <a class="navbar-brand" routerLinkActive="active" routerLink="/home"><img src="https://taskhive.co.in/assets/images/logo.png" alt=""></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -61,33 +61,41 @@
   <!-- bottom bar for mobile app -->
   <div class="mob-bottom-bar fixed-bottom">
     <div class="mob-bottom-bar-options">
-      <a routerLinkActive="active" routerLink="/home"><svg class="bottom-bar-svg  bottom-bar-svg-active" xmlns="http://www.w3.org/2000/svg" width="27" height="30" viewBox="0 0 27 30" fill="none">
+      <a routerLinkActive="active" routerLink="/home" [routerLinkActiveOptions]="{ exact: true }">
+        <svg [ngClass]="{'bottom-bar-svg-active': isActive('/home')}" class="bottom-bar-svg" xmlns="http://www.w3.org/2000/svg" width="27" height="30" viewBox="0 0 27 30" fill="none">
           <path d="M13.5 0L27 10V30H18.5625V18.3333H8.4375V30H0V10L13.5 0Z"></path>
         </svg></a>
-      <span class="bottom-bar-span bottom-bar-active">Home</span>
+      <span [ngClass]="{'bottom-bar-active': isActive('/home')}" class="bottom-bar-span bottom-bar-active">Home</span>
     </div>
     <div class="mob-bottom-bar-options">
-      <a routerLinkActive="active" routerLink="/services"><svg class="bottom-bar-svg " xmlns="http://www.w3.org/2000/svg" width="38" height="30" viewBox="0 0 38 30" fill="none">
+      <a routerLinkActive="active" routerLink="/services" [routerLinkActiveOptions]="{ exact: true }">
+        <svg [ngClass]="{'bottom-bar-svg-active': isActive('/services')}" class="bottom-bar-svg " xmlns="http://www.w3.org/2000/svg" width="38" height="30" viewBox="0 0 38 30" fill="none">
           <path d="M13.3 7.5H24.7V3.75H13.3V7.5ZM0 30V20.625H7.6V22.5H11.4V20.625H26.6V22.5H30.4V20.625H38V30H0ZM0 18.75V7.5H9.5V0H28.5V7.5H38V18.75H30.4V15H26.6V18.75H11.4V15H7.6V18.75H0Z"></path>
         </svg></a>
-      <span class="bottom-bar-span ">Services</span>
+      <span [ngClass]="{'bottom-bar-active': isActive('/services')}" class="bottom-bar-span ">Services</span>
     </div>
     <div class="mob-bottom-bar-options">
-      <a routerLinkActive="active" routerLink="/portfolio"><svg class="bottom-bar-svg " xmlns="http://www.w3.org/2000/svg" width="43" height="30" viewBox="0 0 43 30" fill="none">
+      <a routerLinkActive="active" routerLink="/portfolio" [routerLinkActiveOptions]="{ exact: true }">
+        <svg [ngClass]="{'bottom-bar-svg-active': isActive('/portfolio')}" class="bottom-bar-svg " xmlns="http://www.w3.org/2000/svg" width="43" height="30" viewBox="0 0 43 30" fill="none">
           <path d="M8.51284 4.28571H1.51043C0.705802 4.28571 -0.0988231 4.97143 0.0099101 6.08571L3.40239 27.4929C3.40239 27.4929 7.42551 11.7214 8.20839 7.92857C8.4476 6.79286 9.53494 6.42857 10.3396 6.42857H21.5608C21.5608 6.42857 20.0386 1.97143 19.8863 1.47857C19.6254 0.535714 19.1469 0 18.1901 0H10.992C10.2091 0 9.4697 0.492857 9.25223 1.37143C9.05651 2.22857 8.51284 4.28571 8.51284 4.28571ZM19.1252 4.28571H10.4265C10.4265 4.28571 11.3399 2.14286 12.3185 2.14286H16.9505C17.9944 2.14286 19.1252 4.28571 19.1252 4.28571ZM5.62054 28.3929C4.9464 29.4 3.9678 30 2.88047 30H37.0879C38.2622 30 39.0886 29.3357 39.3278 28.2214C40.2847 23.5286 42.9813 10.1357 42.9813 10.1357C43.1335 9.06429 42.3289 8.57143 41.633 8.57143H34.6088V5.42143C34.6088 5.07857 34.0434 4.28571 33.1735 4.28571H24.9968C23.866 4.28571 23.1048 5.52857 23.1048 5.52857L21.5608 8.57143H11.9706C11.2747 8.57143 10.6005 8.97857 10.47 9.64286C10.47 9.64286 7.01233 24 6.72962 25.35C6.57739 26.1429 6.25119 27.4714 5.62054 28.3929ZM33.2605 8.57143H23.7355C23.7355 8.57143 24.9968 6.42857 26.1929 6.42857H31.1728C32.7169 6.42857 33.2605 8.57143 33.2605 8.57143Z"></path>
         </svg></a>
-      <span class="bottom-bar-span ">Portfolio</span>
+      <span [ngClass]="{'bottom-bar-active': isActive('/portfolio')}" class="bottom-bar-span ">Portfolio</span>
     </div>
     <div class="mob-bottom-bar-options">
-      <a routerLinkActive="active" routerLink="/about"><svg class="bottom-bar-svg " xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+      <a routerLinkActive="active" routerLink="/about" [routerLinkActiveOptions]="{ exact: true }">
+        <svg [ngClass]="{'bottom-bar-svg-active': isActive('/about')}" class="bottom-bar-svg " xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
           <path d="M16.5 10.5H13.5V7.5H16.5M16.5 22.5H13.5V13.5H16.5M15 0C13.0302 0 11.0796 0.387987 9.25975 1.14181C7.43986 1.89563 5.78628 3.00052 4.3934 4.3934C1.58035 7.20644 0 11.0218 0 15C0 18.9782 1.58035 22.7936 4.3934 25.6066C5.78628 26.9995 7.43986 28.1044 9.25975 28.8582C11.0796 29.612 13.0302 30 15 30C18.9782 30 22.7936 28.4196 25.6066 25.6066C28.4196 22.7936 30 18.9782 30 15C30 13.0302 29.612 11.0796 28.8582 9.25975C28.1044 7.43986 26.9995 5.78628 25.6066 4.3934C24.2137 3.00052 22.5601 1.89563 20.7403 1.14181C18.9204 0.387987 16.9698 0 15 0Z"></path>
         </svg></a>
-      <span class="bottom-bar-span ">About</span>
+      <span [ngClass]="{'bottom-bar-active': isActive('/about')}" class="bottom-bar-span ">About</span>
     </div>
     <div class="mob-bottom-bar-options">
-      <a routerLinkActive="active" routerLink="/contact"><svg class="bottom-bar-svg " xmlns="http://www.w3.org/2000/svg" width="24" height="30" viewBox="0 0 24 30" fill="none">
+      <a routerLinkActive="active" routerLink="/contact" [routerLinkActiveOptions]="{ exact: true }">
+        <svg [ngClass]="{'bottom-bar-svg-active': isActive('/contact')}" class="bottom-bar-svg " xmlns="http://www.w3.org/2000/svg" width="24" height="30" viewBox="0 0 24 30" fill="none">
           <path d="M15 0H0V30H24V9L15 0ZM12 12C13.65 12 15 13.35 15 15C15 16.65 13.65 18 12 18C10.35 18 9 16.65 9 15C9 13.35 10.35 12 12 12ZM18 24H6V23.145C6 21.93 6.72 20.85 7.83 20.37C9.14528 19.796 10.5649 19.4997 12 19.4997C13.4351 19.4997 14.8547 19.796 16.17 20.37C16.7134 20.6023 17.1766 20.9892 17.502 21.4825C17.8273 21.9759 18.0005 22.554 18 23.145V24Z"></path>
         </svg></a>
-      <span class="bottom-bar-span ">Contact</span>
+      <span [ngClass]="{'bottom-bar-active': isActive('/contact')}" class="bottom-bar-span ">Contact</span>
     </div>
   </div>
+  <div class="preloader" style="display: none;">
+    <span class="loader"></span>
+ </div>

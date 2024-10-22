@@ -12,8 +12,7 @@ import { PricingComponent } from './pricing/pricing.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { TermsConditionComponent } from './terms-condition/terms-condition.component';
 import { ServicesComponent } from './services/services.component';
-
-
+import { BlogDetailsComponent } from './blog-details/blog-details.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +23,8 @@ import { ServicesComponent } from './services/services.component';
     PricingComponent,
     PrivacyPolicyComponent,
     TermsConditionComponent,
-    ServicesComponent
+    ServicesComponent,
+    BlogDetailsComponent
   ],
   imports: [
     CommonModule,

@@ -1,10 +1,6 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
 body {
     font-family: 'Raleway', sans-serif;
+    padding-top: 70px;
 }
 
 .preloader {
@@ -56,9 +52,25 @@ body {
     background-color: #FFF;
 }
 
+.fixed-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+
+.navbar-custom {
+    margin-left: 100px; /* Adjust as needed */
+    margin-right: auto;
+    padding-top: 0px; /* Adjust vertical spacing */
+}
+
+
 .navbar-brand img {
     height: 6.5rem;
 }
+
 
 .navbar-toggler {
     display: none;
@@ -255,8 +267,13 @@ body {
         height: 37px;
     }
 
+    .navbar-custom {
+        margin-left: 0px; /* Center-align the navbar on smaller screens */
+        padding-left: 1rem; /* Add some padding for better spacing */
+        padding-right: 1rem;
+    }
     .navbar-brand img {
-        height: 5rem;
+        height: 5rem; /* Scale down the logo for mobile */
     }
 
     /* ###BOTTOM_BAR### */
@@ -346,6 +363,14 @@ body {
         height: 1.8rem;
     }
 
+    .navbar-custom {
+        margin-left: 30px; /* Center-align the navbar on smaller screens */
+        padding-left: 1rem; /* Add some padding for better spacing */
+        padding-right: 1rem;
+    }
+    .navbar-brand img {
+        height: 5rem; /* Scale down the logo for mobile */
+    }
 
     /* ###BOTTOM_BAR### */
 
@@ -403,6 +428,9 @@ body {
 
 @media only screen and (max-width: 991px) and (min-width: 768px) {
     /* ###HEADER### */
+    .navbar-custom {
+        margin-left: 100px; /* Adjust alignment for medium screens */
+    }
 
     .dropdown-menu[data-bs-popper] {
         left: -100px;

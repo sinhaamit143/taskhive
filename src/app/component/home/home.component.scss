@@ -2,6 +2,7 @@ body {
     font-family: 'Raleway', 'Roboto', 'Poppins', sans-serif;
 }
 
+//=================================expert section=================================================
 .expert-part {
     margin-top: 170px;
     margin-bottom: 60px;
@@ -48,7 +49,6 @@ hr.hr-line {
     color: #fff;
     background-color: #0399FA;
     border-color: #0399FA;
-    font-family: 'Poppins';
     font-size: 18px;
     font-weight: 700;
     line-height: 26px;
@@ -67,7 +67,6 @@ hr.hr-line {
     color: #000000;
     background-color: #fff;
     border-color: #FCDB38;
-    font-family: 'Poppins';
     font-size: 18px;
     font-weight: 700;
     line-height: 26px;
@@ -92,7 +91,6 @@ hr.hr-yellow {
     color: #000000;
     background-color: #FCDB38;
     border-color: #FCDB38;
-    font-family: 'Poppins';
     font-size: 18px;
     font-weight: 700;
     line-height: 26px;
@@ -137,6 +135,7 @@ hr.hr-yellow {
     margin-top: 30px;
 }
 
+//===============================what we do section=============================================================
 .what-we-do-section {
     background: url(../../../assets/images/what-we-do.svg);
     background-repeat: no-repeat;
@@ -244,6 +243,7 @@ hr.hr-yellow {
     text-align: left;
 }
 
+//===================trusted partners=======================
 .trusted-partner-section {
     margin-top: 100px;
     margin-bottom: 100px;
@@ -345,6 +345,7 @@ hr.hr-blue {
     object-fit: contain;
 }
 
+//===========================crafting section ======================================
 .crafting-section {
     background: url(../../../assets/images/crafting-img.svg);
     background-repeat: no-repeat;
@@ -418,6 +419,112 @@ hr.hr-blue {
     border-color: #000000;
 }
 
+
+
+//=========================blog section=======================================
+/*--------------------------------------------------------------
+# Testimonials Section
+--------------------------------------------------------------*/
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .blog-carousel {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+  
+  .blog-card {
+    flex: 0 0 calc(33.333% - 20px);
+    margin: 0 10px;
+  }
+  
+  .testimonial-item {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .testimonial-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .card-body {
+    padding: 15px;
+    height: 150px;
+    overflow: hidden;
+  }
+
+  .read_more_blog {
+    text-align: right;
+    padding: 10px 15px;
+  }
+  
+  .read_more_blog a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .read_more_blog a:hover {
+    text-decoration: underline;
+  }
+  
+  .carousel-control-prev,
+  .carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .carousel-control-prev {
+    left: 10px;
+  }
+  
+  .carousel-control-next {
+    right: 10px;
+  }
+  
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    width: 20px;
+    height: 20px;
+    background-size: 100% 100%;
+  }
+  
+  /* Media query for mobile devices */
+  @media (max-width: 767px) {
+    .blog-card {
+      flex: 0 0 calc(100% - 20px);
+    }
+  
+    .carousel-control-prev,
+    .carousel-control-next {
+      width: 30px;
+      height: 30px;
+    }
+  
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      width: 15px;
+      height: 15px;
+    }
+  }
+
+//=========================contact us==========================================
 .contact-us {
     margin: 75px 0px;
     overflow: hidden;
@@ -506,338 +613,6 @@ hr.hr-blue {
 
 .contact-us .padding-left {
     padding-left: 3rem;
-}
-
-.our-services {
-    margin-top: 170px;
-    margin-bottom: 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.our-services .our-services-heading {
-    font-family: 'Raleway';
-    font-size: 50px;
-    font-weight: 400;
-    line-height: 70px;
-    letter-spacing: 0em;
-    text-align: left;
-}
-
-.our-services-content {
-    margin-bottom: 70px;
-    overflow: hidden;
-}
-
-.our-services-content .our-content-head {
-    font-family: 'Raleway';
-    font-size: 28px;
-    font-weight: 700;
-    line-height: 50px;
-    letter-spacing: 0em;
-    text-align: left;
-    margin-bottom: 30px;
-}
-
-.our-services-content .sub-content-head {
-    font-family: 'Raleway';
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 35px;
-    letter-spacing: 0em;
-    text-align: left;
-    margin-bottom: 15px;
-}
-
-.our-services-content .sub-content-para {
-    font-family: 'Raleway';
-    font-size: 17px;
-    font-weight: 400;
-    line-height: 30px;
-    letter-spacing: 0em;
-    text-align: justify;
-}
-
-.our-services-content .services-img {
-    width: 27rem;
-}
-
-.our-services-content .services-img2 {
-    display: none;
-}
-
-.our-services-image {
-    display: flex;
-    justify-content: end;
-    align-items: center;
-}
-
-.project-details {
-    margin-top: 170px;
-    margin-bottom: 80px;
-    overflow: hidden;
-}
-
-.project-details .project-details-heading {
-    font-family: 'Raleway';
-    font-size: 50px;
-    font-weight: 400;
-    line-height: 70px;
-    letter-spacing: 0em;
-    text-align: left;
-    margin-bottom: 40px;
-}
-
-.project-details .project-details-para {
-    font-family: 'Raleway';
-    font-size: 17px;
-    font-weight: 400;
-    line-height: 30px;
-    letter-spacing: 0em;
-    text-align: justify;
-    margin-bottom: 30px;
-}
-
-.project-details .head-img {
-    width: 26rem;
-    margin-bottom: 70px;
-}
-
-.project-details .head-img2 {
-    display: none;
-}
-
-.our-project-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-}
-
-.project-details .project-details-img {
-    width: 22rem;
-    margin-top: 60px;
-    margin-left: 30px;
-    height: 15rem;
-    object-fit: cover;
-}
-
-.gallery-part {
-    margin-top: 130px;
-    margin-bottom: 70px;
-}
-
-.gallery-part .slider {
-    background-color: #F7F7F7;
-    border-radius: 0px 10px 10px 0px;
-    display: none;
-    opacity: 0;
-    transition: all 2s;
-}
-
-.gallery-part .gallery-heading {
-    font-family: 'Raleway';
-    font-size: 50px;
-    font-weight: 400;
-    line-height: 70px;
-    letter-spacing: 0em;
-    text-align: left;
-}
-
-.gallery-part .gallery-img {
-    width: 20rem;
-    filter: grayscale(1);
-    transition: all 2s;
-    height: 22rem;
-    object-fit: cover;
-}
-
-.gallery-content .g-content-head {
-    font-family: 'Poppins';
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 50px;
-    letter-spacing: 0.02em;
-    text-align: left;
-    margin-left: 20px;
-}
-
-.gallery-content .g-content-para {
-    font-family: 'Poppins';
-    color: #0399FA;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-    letter-spacing: 0.02em;
-    text-align: right;
-    margin-bottom: 0;
-    margin-top: 5px;
-    margin-right: 15px;
-    display: flex;
-    justify-content: end;
-}
-
-.g-content-para {
-    text-decoration: none;
-}
-
-.gallery-content .margin-img {
-    margin-bottom: 25px;
-}
-
-.gallery-content .g-content-img {
-    width: 17rem;
-    height: 8rem;
-    object-fit: cover;
-    margin-left: 17px;
-}
-
-.blog-section {
-    margin-top: 2rem;
-}
-
-.blog-cards {
-    padding: .5rem;
-    height: 30rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-    border-radius: 10%;
-    overflow: hidden;
-}
-
-.blog-image {
-    height: 50%;
-    overflow: hidden;
-}
-
-.blog-image img {
-    object-fit: cover;
-    object-position: center;
-}
-
-.blog-data {
-    height: 40%;
-}
-
-.blog-data p {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 8;
-    overflow: hidden;
-    color: #000;
-}
-
-.read_more_blog {
-    width: 100%;
-    display: flex;
-    justify-content: end;
-    margin-right: 3rem;
-}
-
-.read_more_blog a {
-    text-decoration: none;
-    color: #0399FA;
-}
-
-.gallery-slid-show {
-    width: 100%;
-    margin-bottom: 30px;
-}
-
-.blog-section {
-    margin-top: 2rem;
-}
-
-.blog-cards {
-    padding: .5rem;
-    height: 30rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-    border-radius: 10%;
-    overflow: hidden;
-}
-
-.blog-image {
-    height: 50%;
-    overflow: hidden;
-}
-
-.blog-image img {
-    object-fit: cover;
-    object-position: center;
-}
-
-.blog-data {
-    height: 40%;
-}
-
-.blog-data p {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 8;
-    overflow: hidden;
-    color: #000;
-}
-
-.read_more_blog {
-    width: 100%;
-    display: flex;
-    justify-content: end;
-    margin-right: 3rem;
-}
-
-.read_more_blog a {
-    text-decoration: none;
-    color: #0399FA;
-}
-
-.gallery-slid-show {
-    width: 100%;
-    margin-bottom: 30px;
-}
-
-.our-services-image1 {
-    justify-content: start;
-}
-
-.top-to-bottom-btn {
-    position: fixed;
-    bottom: 10%;
-    right: 5%;
-    display: none;
-    transition: all 1s ease;
-}
-
-.top-to-bottom-btn .top-to-bottom {
-    background-color: #0399FA;
-    border-radius: 10px;
-    padding: 10px;
-    opacity: 0;
-    transition: all 1s ease;
-}
-
-.top-to-bottom-btn .top-to-bottom-icon {
-    width: 2rem;
-}
-
-.project-details-paras {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 15;
-    overflow: hidden;
-}
-
-.read-more-btn {
-    margin-top: 1.35rem;
-}
-
-.contact-git {
-    width: 100%;
 }
 
 @media only screen and (max-width: 379px) and (min-width: 330px) {
@@ -1155,172 +930,7 @@ hr.hr-blue {
         margin-top: 35px;
         margin-bottom: 22px;
     }
-
-    .our-services {
-        margin-top: 140px;
-        margin-bottom: 5px;
-        display: block;
-    }
-
-    .our-services .our-services-heading {
-        font-size: 28px;
-        line-height: 45px;
-    }
-
-    .book-a-call-btn {
-        display: none;
-    }
-
-    .our-services-image {
-        display: block;
-    }
-
-    .our-services-content .our-content-head {
-        font-size: 20px;
-        line-height: 30px;
-        margin-bottom: 12px;
-    }
-
-    .our-services-content .sub-content-head {
-        font-size: 15px;
-        line-height: 25px;
-        margin-bottom: 10px;
-    }
-
-    .our-services-content .sub-content-para {
-        font-size: 13px;
-        line-height: 24px;
-    }
-
-    .our-services-content .services-img {
-        width: 23rem;
-        display: none;
-    }
-
-    .our-services-content .services-img2 {
-        width: 23rem;
-        display: block;
-    }
-
-    .book-a-call-btn1 {
-        display: block;
-        margin-top: 30px;
-    }
-
-    .book-a-call-btn2 {
-        display: block;
-        margin-top: 17rem;
-    }
-
-    .book-a-call-btn3 {
-        display: block;
-        margin-top: 2rem;
-        margin-bottom: 5rem;
-    }
-
-    .our-services-content {
-        margin-bottom: 25px;
-    }
-
-    .our-services-img1 {
-        position: absolute;
-        top: 29rem;
-    }
-
-    .our-services-content1 {
-        margin-top: 0rem;
-    }
-
-    .project-details {
-        margin-top: 140px;
-        margin-bottom: 100px;
-    }
-
-    .project-details .project-details-heading {
-        font-size: 24px;
-        line-height: 32px;
-        margin-top: 30px;
-        margin-bottom: 20px;
-    }
-
-    .project-details .project-details-para {
-        font-size: 12px;
-        line-height: 22px;
-        margin-bottom: 16px;
-    }
-
-    .project-details .project-details-img {
-        width: 10.8rem;
-        margin-top: 20px;
-        margin-left: 0px;
-    }
-
-    .project-details .head-img {
-        width: 18rem;
-        margin-left: 40px;
-        display: none;
-    }
-
-    .project-details .head-img2 {
-        display: block;
-        width: 23.1rem;
-    }
-
-    .gallery-part .gallery-heading {
-        font-size: 28px;
-        line-height: 45px;
-    }
-
-    .gallery-part .gallery-img {
-        width: 95%;
-        filter: grayscale(1);
-        transition: all 2s;
-    }
-
-    .gallery-content .g-content-head {
-        font-size: 15px;
-        line-height: 30px;
-        margin-top: 10px;
-        margin-left: 0px;
-    }
-
-    .gallery-content .margin-img {
-        margin-bottom: 14px;
-    }
-
-    .gallery-content .g-content-img {
-        width: 10.7rem;
-        margin-left: 0px;
-    }
-
-    .gallery-content .g-content-para {
-        font-size: 11px;
-        line-height: 30px;
-        margin-top: 0px;
-        margin-right: 2px;
-    }
-
-    .gallery-part .slider {
-        border-radius: 0px 0px 0px 0px;
-    }
-
-    .gallery-image {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-    }
-
-    .top-to-bottom-btn {
-        bottom: 12%;
-    }
-
-    .gallery-slid-show {
-        width: 100%;
-        margin: 0 auto 2rem;
-    }
-
 }
-
 
 @media only screen and (max-width: 551px) and (min-width: 380px) {
     .expert-part .carousel-img {
@@ -1632,170 +1242,7 @@ hr.hr-blue {
         margin-top: 35px;
         margin-bottom: 22px;
     }
-
-    .our-services {
-        margin-top: 140px;
-        margin-bottom: 5px;
-        display: block;
-    }
-
-    .our-services .our-services-heading {
-        font-size: 28px;
-        line-height: 45px;
-    }
-
-    .book-a-call-btn {
-        display: none;
-    }
-
-    .our-services-image {
-        display: block;
-    }
-
-    .our-services-content .our-content-head {
-        font-size: 20px;
-        line-height: 30px;
-        margin-bottom: 12px;
-    }
-
-    .our-services-content .sub-content-head {
-        font-size: 15px;
-        line-height: 25px;
-        margin-bottom: 10px;
-    }
-
-    .our-services-content .sub-content-para {
-        font-size: 13px;
-        line-height: 24px;
-    }
-
-    .our-services-content .services-img {
-        width: 23rem;
-        display: none;
-    }
-
-    .our-services-content .services-img2 {
-        width: 23rem;
-        display: block;
-    }
-
-    .book-a-call-btn1 {
-        display: block;
-        margin-top: 30px;
-    }
-
-    .book-a-call-btn2 {
-        display: block;
-        margin-top: 17rem;
-    }
-
-    .book-a-call-btn3 {
-        display: block;
-        margin-top: 2rem;
-        margin-bottom: 5rem;
-    }
-
-    .our-services-content {
-        margin-bottom: 25px;
-    }
-
-    .our-services-img1 {
-        position: absolute;
-        top: 33rem;
-    }
-
-    .our-services-content1 {
-        margin-top: 0rem;
-    }
-
-    .project-details {
-        margin-top: 140px;
-        margin-bottom: 100px;
-    }
-
-    .project-details .project-details-heading {
-        font-size: 24px;
-        line-height: 32px;
-        margin-top: 30px;
-        margin-bottom: 20px;
-    }
-
-    .project-details .project-details-para {
-        font-size: 12px;
-        line-height: 22px;
-        margin-bottom: 16px;
-    }
-
-    .project-details .project-details-img {
-        width: 10.8rem;
-        margin-top: 20px;
-        margin-left: 0px;
-    }
-
-    .project-details .head-img {
-        width: 18rem;
-        margin-left: 40px;
-        display: none;
-    }
-
-    .project-details .head-img2 {
-        display: block;
-        width: 23.1rem;
-    }
-
-    .gallery-part .gallery-heading {
-        font-size: 28px;
-        line-height: 45px;
-    }
-
-    .gallery-part .gallery-img {
-        width: 22rem;
-        filter: grayscale(1);
-        transition: all 2s;
-    }
-
-    .gallery-content .g-content-head {
-        font-size: 15px;
-        line-height: 30px;
-        margin-top: 10px;
-        margin-left: 0px;
-    }
-
-    .gallery-content .margin-img {
-        margin-bottom: 14px;
-    }
-
-    .gallery-content .g-content-img {
-        width: 10.7rem;
-        margin-left: 0px;
-    }
-
-    .gallery-content .g-content-para {
-        font-size: 11px;
-        line-height: 30px;
-        margin-top: 0px;
-        margin-right: 2px;
-    }
-
-    .gallery-part .slider {
-        border-radius: 0px 0px 0px 0px;
-    }
-
-    .top-to-bottom-btn {
-        bottom: 10%;
-    }
-
-    .gallery-image {
-        display: flex;
-        justify-content: center;
-    }
-
-    .gallery-slid-show {
-        width: 100%;
-        margin: 0 auto 2rem;
-    }
 }
-
 
 @media only screen and (max-width: 767px) and (min-width: 550px) {
     .expert-part {
@@ -2076,145 +1523,7 @@ hr.hr-blue {
         margin-top: 35px;
         margin-bottom: 22px;
     }
-
-    .our-services {
-        margin-top: 130px;
-        margin-bottom: 5px;
-        display: block;
-    }
-
-    .our-services .our-services-heading {
-        font-size: 28px;
-        line-height: 45px;
-    }
-
-    .our-services-content .our-content-head {
-        font-size: 20px;
-        line-height: 30px;
-        margin-bottom: 12px;
-    }
-
-    .our-services-content .sub-content-head {
-        font-size: 15px;
-        line-height: 25px;
-        margin-bottom: 10px;
-    }
-
-    .our-services-content .sub-content-para {
-        font-size: 13px;
-        line-height: 24px;
-    }
-
-    .book-a-call-btn {
-        display: none;
-    }
-
-    .book-a-call-btn1 {
-        display: block;
-        margin-top: 30px;
-    }
-
-    .book-a-call-btn2 {
-        display: block;
-        margin-top: 22rem;
-    }
-
-    .book-a-call-btn3 {
-        display: block;
-        margin-top: 2rem;
-        margin-bottom: 4rem;
-    }
-
-    .our-services-content .services-img {
-        width: 21rem;
-        display: none;
-    }
-
-    .our-services-image {
-        display: flex;
-        justify-content: start;
-        align-items: center;
-    }
-
-    .our-services-image1 {
-        position: absolute;
-        top: 88rem;
-    }
-
-    .our-services-content {
-        margin-bottom: 40px;
-    }
-
-    .our-services-content .services-img2 {
-        width: 32rem;
-        display: block;
-    }
-
-    .project-details {
-        margin-top: 130px;
-        margin-bottom: 100px;
-    }
-
-    .project-details .project-details-heading {
-        font-size: 24px;
-        line-height: 32px;
-        margin-bottom: 20px;
-    }
-
-    .project-details .project-details-para {
-        font-size: 12px;
-        line-height: 22px;
-        margin-bottom: 16px;
-    }
-
-    .project-details .project-details-img {
-        width: 10rem;
-        margin-top: 20px;
-        margin-left: 0px;
-    }
-
-    .project-details .head-img {
-        width: 16rem;
-    }
-
-    .gallery-part .gallery-heading {
-        font-size: 24px;
-        line-height: 32px;
-    }
-
-    .gallery-part .gallery-img {
-        width: 7.9rem;
-        filter: grayscale(1);
-        transition: all 2s;
-    }
-
-    .gallery-content .g-content-head {
-        font-size: 13px;
-        line-height: 23px;
-        margin-left: 5px;
-    }
-
-    .gallery-content .margin-img {
-        margin-bottom: 8px;
-    }
-
-    .gallery-content .g-content-img {
-        width: 6rem;
-        margin-left: 5px;
-    }
-
-    .gallery-content .g-content-para {
-        font-size: 10px;
-        line-height: 18px;
-        margin-right: 10px;
-        margin-top: 3px;
-    }
-
-    .top-to-bottom-btn {
-        bottom: 20%;
-    }
 }
-
 
 @media only screen and (max-width: 991px) and (min-width: 768px) {
     .expert-part .expert-heading {
@@ -2479,98 +1788,7 @@ hr.hr-blue {
         margin-top: 40px;
         margin-bottom: 22px;
     }
-
-    .our-services {
-        margin-top: 170px;
-        margin-bottom: 5px;
-    }
-
-    .our-services .our-services-heading {
-        font-size: 28px;
-        line-height: 45px;
-    }
-
-    .our-services-content .our-content-head {
-        font-size: 20px;
-        line-height: 30px;
-        margin-bottom: 12px;
-    }
-
-    .our-services-content .sub-content-head {
-        font-size: 15px;
-        line-height: 25px;
-        margin-bottom: 10px;
-    }
-
-    .our-services-content .sub-content-para {
-        font-size: 13px;
-        line-height: 24px;
-    }
-
-    .our-services-content .services-img {
-        width: 21rem;
-    }
-
-    .project-details {
-        margin-top: 130px;
-        margin-bottom: 50px;
-    }
-
-    .project-details .project-details-heading {
-        font-size: 28px;
-        line-height: 45px;
-        margin-bottom: 20px;
-    }
-
-    .project-details .project-details-para {
-        font-size: 15px;
-        line-height: 25px;
-        margin-bottom: 20px;
-    }
-
-    .project-details .project-details-img {
-        width: 13.5rem;
-        margin-top: 25px;
-        margin-left: 0px;
-    }
-
-    .project-details .head-img {
-        width: 21rem;
-    }
-
-    .gallery-part .gallery-heading {
-        font-size: 28px;
-        line-height: 45px;
-    }
-
-    .gallery-part .gallery-img {
-        width: 10.5rem;
-        filter: grayscale(1);
-        transition: all 2s;
-    }
-
-    .gallery-content .g-content-head {
-        font-size: 15px;
-        line-height: 30px;
-        margin-left: 10px;
-    }
-
-    .gallery-content .margin-img {
-        margin-bottom: 14px;
-    }
-
-    .gallery-content .g-content-img {
-        width: 10rem;
-        margin-left: 10px;
-    }
-
-    .gallery-content .g-content-para {
-        font-size: 11px;
-        line-height: 18px;
-        margin-right: 18px;
-    }
 }
-
 
 @media only screen and (max-width: 1199px) and (min-width: 992px) {
     .expert-part .expert-heading {
@@ -2775,88 +1993,6 @@ hr.hr-blue {
         line-height: 30px;
         margin-top: 22px;
         margin-bottom: 22px;
-    }
-
-    .our-services {
-        margin-top: 170px;
-        margin-bottom: 5px;
-    }
-
-    .our-services .our-services-heading {
-        font-size: 45px;
-        line-height: 70px;
-    }
-
-    .our-services-content .our-content-head {
-        font-size: 22px;
-        line-height: 32px;
-        margin-bottom: 15px;
-    }
-
-    .our-services-content .sub-content-head {
-        font-size: 17px;
-        line-height: 32px;
-        margin-bottom: 12px;
-    }
-
-    .our-services-content .sub-content-para {
-        font-size: 15px;
-        line-height: 28px;
-    }
-
-    .project-details {
-        margin-top: 130px;
-        margin-bottom: 50px;
-    }
-
-    .project-details .project-details-heading {
-        font-size: 45px;
-        line-height: 70px;
-        margin-bottom: 35px;
-    }
-
-    .project-details .project-details-para {
-        font-size: 16px;
-        line-height: 27px;
-        margin-bottom: 25px;
-    }
-
-    .project-details .project-details-img {
-        width: 17rem;
-        margin-top: 45px;
-        margin-left: 10px;
-    }
-
-    .gallery-part .gallery-heading {
-        font-size: 45px;
-        line-height: 70px;
-    }
-
-    .gallery-part .gallery-img {
-        width: 14.3rem;
-        filter: grayscale(1);
-        transition: all 2s;
-    }
-
-    .gallery-content .g-content-head {
-        font-size: 17px;
-        line-height: 35px;
-        margin-left: 14px;
-    }
-
-    .gallery-content .margin-img {
-        margin-bottom: 18px;
-    }
-
-    .gallery-content .g-content-img {
-        width: 11.7rem;
-        margin-left: 14px;
-    }
-
-    .gallery-content .g-content-para {
-        font-size: 14px;
-        line-height: 22px;
-        margin-right: 12px;
     }
 }
 
@@ -3063,98 +2199,5 @@ hr.hr-blue {
         line-height: 30px;
         margin-top: 22px;
         margin-bottom: 22px;
-    }
-
-    .our-services {
-        margin-top: 170px;
-        margin-bottom: 5px;
-    }
-
-    .our-services .our-services-heading {
-        font-size: 45px;
-        line-height: 70px;
-    }
-
-    .our-services-content .our-content-head {
-        font-size: 24px;
-        line-height: 32px;
-        margin-bottom: 15px;
-    }
-
-    .our-services-content .sub-content-head {
-        font-size: 18px;
-        line-height: 32px;
-        margin-bottom: 12px;
-    }
-
-    .our-services-image {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .our-services-content .sub-content-para {
-        font-size: 15px;
-        line-height: 28px;
-    }
-
-    .project-details {
-        margin-top: 130px;
-        margin-bottom: 50px;
-    }
-
-    .project-details .project-details-heading {
-        font-size: 45px;
-        line-height: 70px;
-        margin-bottom: 35px;
-    }
-
-    .project-details .project-details-para {
-        font-size: 16px;
-        line-height: 27px;
-        margin-bottom: 25px;
-    }
-
-    .project-details .project-details-img {
-        width: 20rem;
-        margin-top: 56px;
-        margin-left: 10px;
-    }
-
-    .project-details .head-img {
-        width: 23rem;
-        margin-bottom: 70px;
-    }
-
-    .gallery-part .gallery-heading {
-        font-size: 45px;
-        line-height: 70px;
-    }
-
-    .gallery-part .gallery-img {
-        width: 17.1rem;
-        filter: grayscale(1);
-        transition: all 2s;
-    }
-
-    .gallery-content .g-content-head {
-        font-size: 18px;
-        line-height: 35px;
-        margin-left: 12px;
-    }
-
-    .gallery-content .margin-img {
-        margin-bottom: 18px;
-    }
-
-    .gallery-content .g-content-img {
-        width: 14.7rem;
-        margin-left: 12px;
-    }
-
-    .gallery-content .g-content-para {
-        font-size: 15px;
-        line-height: 27px;
-        margin-right: 12px;
     }
 }
