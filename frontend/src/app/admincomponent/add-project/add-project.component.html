@@ -1,0 +1,58 @@
+<div class="content-page">
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="page-title-box">
+            <div class="page-title-right">
+              <a class="btn btn-primary btn-sm" routerLink="/projects">Projects</a>
+            </div>
+            <h4 class="page-title">Add New Project</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <form [formGroup]="myForm" (ngSubmit)="collectAndSubmitForm()" id="project_form">
+          <div class="row">
+
+            <div class="form-group col-lg-12">
+              <label for="name">Project Name ( <span class="text-danger">required *</span>)</label>
+              <input type="text" class="form-control" id="name" formControlName="name" />
+            </div>
+
+            <div class="form-group col-lg-12" *ngFor="let description of descriptions.controls; let i = index">
+              <label for="description_{{i}}">Description {{i + 1}} ( <span class="text-danger" *ngIf="i < 2">required *</span>)</label>
+              <textarea class="form-control" formControlName="descriptions" rows="5"></textarea>
+              <p class="text-danger">Max Character Count: 600 Characters</p>
+              <button *ngIf="descriptions.length > 1" type="button" class="btn btn-danger" (click)="removeDescription(i)">Remove Description</button><br>
+            </div><br>
+
+            <div class="form-group col-lg-12">
+              <button type="button" class="btn btn-secondary" (click)="addDescription()">Add Another Description</button><br>
+            </div>
+
+            <div class="form-group col-lg-12">
+              <label for="project_image">Project Image ( <span class="text-danger">required *</span>)</label>
+              <div class="custom-dropzone" ngx-dropzone [accept]="'image/*'" [multiple]="true" (change)="onFileSelect($event)">
+                <ngx-dropzone-label>Drag and drop an image here, or click to select an image</ngx-dropzone-label>
+                <ngx-dropzone-image-preview 
+                  ngProjectAs="ngx-dropzone-preview" 
+                  [removable]="true" 
+                  *ngFor="let file of images; let i = index" 
+                  [file]="file" 
+                  (removed)="removeFile(i)">
+                </ngx-dropzone-image-preview>
+              </div>
+            </div>
+            
+            <div class="form-group col-lg-12">
+              <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">Add Project</button>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div> 
+  </div> 
+</div>

@@ -1,0 +1,47 @@
+<div class="content-page">
+    <div class="content">
+        <!-- Start Content-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box">
+                        <div class="page-title-right">
+                            <a class="btn btn-primary btn-sm" routerLink="/blogs">Blogs</a>
+                        </div>
+                        <h4 class="page-title">Edit Blog</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <form [formGroup]="myForm" (ngSubmit)="uploadImage()" id="blog_form">
+                    <div class="row">
+                        <div class="form-group col-lg-4">
+                            <label for="title">Project Name ( <span class="text-danger">required *</span>)</label>
+                            <input type="text" class="form-control" id="title" formControlName="title" required>
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <label for="description">Project Description ( <span class="text-danger">required *</span>)</label>
+                            <textarea class="form-control" id="description" formControlName="description" rows="5" required></textarea>
+                            <p class="text-danger">Max Character Count: 600 Characters</p>
+                        </div>
+                        <div class="form-group col-lg-12" *ngIf="selectedBlog.image">
+                            <img style="width: 200px; height: 200px;" [src]="env + selectedBlog.image" alt="Current Blog Image">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label for="image">Project Cover Image ( <span class="text-danger">Change Image If Required *</span>)</label>
+                            <div class="custom-dropzone" ngx-dropzone [accept]="'image/*'" (change)="onSelect($event)">
+                                <ngx-dropzone-label>Drag and drop an image here, or click to select an image</ngx-dropzone-label>
+                                <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" [removable]="true" *ngFor="let f of image" [file]="f" (removed)="onRemove(f)">
+                                </ngx-dropzone-image-preview>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-12">
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div> <!-- container -->
+    </div> <!-- content -->
+</div>

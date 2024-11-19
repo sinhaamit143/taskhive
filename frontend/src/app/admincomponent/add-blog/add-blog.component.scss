@@ -1,0 +1,103 @@
+.dropzone {
+    border: 2px dashed #007bff;
+    border-radius: 6px;
+    padding: 30px;
+    text-align: center;
+    background-color: #f8f9fa;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow for 3D effect */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .dropzone:hover {
+    background-color: #e2e6ea;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover for stronger 3D effect */
+  }
+  
+  .dropzone p {
+    margin: 0;
+    font-size: 16px;
+    color: #007bff;
+  }
+  
+  .dropzone input[type="file"] {
+    display: none;
+  }
+  
+  .preview-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .preview-image {
+    max-width: 25%;
+    max-height: 25%;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for the preview image */
+  }
+
+  .btn {
+    color: #000;
+    background: #FCDB38;
+    border: none;
+}
+
+.btn:hover {
+    color: #fff;
+    background: #0399FA;
+}
+
+.page-title-box .page-title {
+  font-size: 1.25rem;
+  margin: 0;
+  line-height: 75px;
+  color: #323a46
+}
+
+.page-title-box .page-title-right {
+  float: right;
+  margin-top: 22px
+}
+
+.page-title-box .breadcrumb {
+  padding-top: 5px
+}
+
+@media (max-width: 767.98px) {
+  .page-title-box .page-title {
+      display:block;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      line-height: 70px
+  }
+
+  .page-title-box .breadcrumb {
+      display: none
+  }
+}
+
+@media (max-width: 640px) {
+  .page-title-box .page-title-right {
+      display:none
+  }
+}
+
+@media (max-width: 419px) {
+  .page-title-box .breadcrumb {
+      display:none
+  }
+}
+
+@media print {
+  .footer,.left-side-menu,.navbar-custom,.page-title-box,.right-bar {
+      display: none
+  }
+
+  .card-body,.content,.content-page,.right-bar,body {
+      padding: 0;
+      margin: 0
+  }
+}

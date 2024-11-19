@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light px-2">
+<div class="d-flex align-items-center">
+  <img class="navbar-brand px-3" src="/assets/images/logo.png" alt="" height="60">
+
+  <div class="side-nav-button p-3 me-3 text-dark" (click)="SideNavToggle()">
+      <i class="fa-solid fa-bars"></i>
+  </div>
+</div>
+
+<div class="flex-grow-1"></div>
+
+<div class="profile-logo dropstart">
+      <button class="btn btn-outline-dark dropdown-toggle d-none d-lg-block" data-bs-toggle="dropdown">Taskhive</button>
+      <i class="fa fa-user profile-icon d-lg-none" data-bs-toggle="dropdown"></i>
+      <ul class="dropdown-menu dropdown-menu-light">
+          <li><a href="javascript:void(0)" class="dropdown-item" (click)="logout()">Log Out</a></li>
+      </ul>
+</div>
+</nav>

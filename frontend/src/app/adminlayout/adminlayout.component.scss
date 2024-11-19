@@ -1,0 +1,52 @@
+.black-border {
+    border: 1px solid black;
+}
+
+app-admin-header {
+    width: 100%;
+    top: 0px;
+    height: 4rem;
+    z-index: 2;
+}
+
+main {
+    position: absolute;
+    width: 100%;
+    top: 4rem;
+    z-index: 2;
+}
+
+app-admin-sidebar {
+    position: fixed;
+    left: Orem;
+    width: 60px;
+    
+    box-shadow: 0px 0px 10px ☐ rgba(0, 0, 0, 0.5);
+    border-top: 1px solid #e1e7ed;
+    overflow-x: hidden;
+    white-space: nowrap;
+    transition: width 250ms ease-in;
+}
+
+.app-side-nav-open {
+    width: 250px;
+}
+
+.display-area {
+    position: relative;
+    left: 60px;
+    width: 95%;
+   
+    transition: left 250ms ease-in, width 250ms ease-in;
+    background-color: #e1e7ed !important;
+}
+
+.display-area-shrink {
+    width: calc(100% - 250px);
+    left: 250px;
+}
+
+/* Global styles for body and html */
+body, html {
+    background-color: #e1e7ed !important;;
+}

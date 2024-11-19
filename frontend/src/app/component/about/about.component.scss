@@ -1,0 +1,549 @@
+.support-section {
+    margin-top: 22vh;
+    font-family: 'Raleway';
+}
+
+.support-section1 {
+    margin-top: 7vh;
+    margin-bottom: 15vh;
+}
+
+.support-head {
+    margin: 2rem auto;
+}
+
+.support-head h1 {
+    font-weight: 400;
+    color: #000;
+    margin-bottom: 1.5rem;
+}
+.support-head img {
+    width: 100%;
+}
+
+.support-body {
+    margin: 3rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.support-page-data h4 {
+    color: #000;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.support-page-data p {
+    text-align: justify;
+    line-height: 2.5rem;
+    font-size: 1.1rem;
+    margin-bottom: 0;
+}
+
+.support-page-data ul li {
+    text-align: justify;
+    line-height: 2.5rem;
+    font-size: 1.1rem;
+    margin-bottom: 0;
+}
+
+.support-page-data span a {
+    text-decoration: none;
+    color: #0399FA;
+    font-weight: 600;
+}
+
+/* ###ABOUT_PAGE### */
+
+.about-head-section {
+    display: flex;
+    justify-content: space-between
+}
+
+.about-header img {
+    height: 20rem;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50px;
+}
+
+.blue-btn {
+    color: #fff;
+    background-color: #0399FA;
+    border-color: #0399FA;
+
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: center;
+    width: fit-content;
+    height: fit-content;
+    padding: .5rem 1.5rem;
+}
+
+.blue-btn:hover {
+    color: #fff;
+    background-color: #0399FA;
+    border-color: #0399FA;
+}
+
+
+
+.get_in_touch {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+}
+
+.mobile-login-logo {
+    display: none;
+}
+
+.mob-btn-div {
+    display: none;
+}
+
+@media only screen and (max-width: 551px) and (min-width: 280px) {
+    .support-section {
+        margin-bottom: 15vh;
+    }
+
+    .support-page-data p {
+        font-size: .9em;
+        line-height: 1.5rem;
+    }
+
+    .support-page-data ul li {
+        text-align: justify;
+        font-size: .9em;
+        line-height: 2.5rem;
+        margin-bottom: 0;
+    }
+
+    .about-header img {
+        height: 10rem;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 20px;
+    }
+
+    /* ###ABOUT_US### */
+
+    .about-header {
+        margin: 0;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .about-head-section {
+        margin: 1rem auto 0;
+        text-align: start;
+        width: 100%;
+    }
+
+    .about-body {
+        margin-top: 1rem;
+    }
+
+    .about-desktop-btn {
+        display: none;
+    }
+
+    .mob-btn-div {
+        display: block;
+    }
+
+    /* ###LOGIN### */
+
+    .login-img {
+        height: 15vh;
+        background-size: cover;
+        background-position: calc(-2px);
+        background-repeat: no-repeat;
+    }
+
+    .login-details-body {
+        gap: 1rem;
+    }
+
+    .login-row {
+        height: 85vh;
+    }
+
+    .mobile-login-logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    .mobile-login-logo img {
+        height: 6rem;
+    }
+
+    .login-logo img {
+        display: none;
+    }
+
+    .login-data {
+        margin: .5rem auto 0;
+    }
+
+    .login-details-head h1 {
+        margin-bottom: 1.5rem;
+    }
+
+    .login-section {
+        margin-bottom: 10vh;
+    }
+
+    /* ###SIGNUP### */
+
+    .sign-up-img {
+        background-position: center;
+        height: 15vh;
+    }
+
+    .sign-up-btn {
+        width: 100%;
+    }
+
+    .sign-up-data {
+        padding: 0;
+    }
+
+    .sign-up-head {
+        width: unset;
+        margin-top: 2rem;
+    }
+
+    .sign-up-details {
+        margin: 2rem 0;
+    }
+
+    .sign_up_logo {
+        height: 100%;
+        width: 100%;
+        align-items: center;
+        margin-top: .5rem;
+    }
+
+    .sign_up_logo img {
+        height: 6rem;
+    }
+
+    .sign-up-info {
+        margin-bottom: 1.8rem;
+    }
+
+    /* ###CONTACT_US### */
+
+    .contact-image {
+        display: none;
+    }
+
+    .contact-input {
+        width: 100%;
+    }
+
+    .contact-input input {
+        width: 100%;
+    }
+
+    .contact-input select {
+        width: 100%;
+    }
+
+    .contact-input textarea {
+        width: 100%;
+    }
+
+    .contact-input button {
+        width: 100%;
+    }
+
+    .contact-data-head {
+        width: 100%;
+    }
+
+    .contact-options {
+        width: 100%;
+    }
+
+    .contact-data-head h1 {
+        font-size: 1.2rem;
+    }
+
+    .options {
+        gap: 1rem;
+    }
+
+    /* ###FORGET_PASSWORD### */
+
+    .forget-passwd-row {
+        height: 80vh;
+    }
+
+    .ap-otp-input {
+        width: 15%;
+        height: 45px;
+        margin: 6px;
+    }
+
+    .get_in_touch {
+        justify-content: start;
+    }
+
+    .get_in_touch_btn {
+        padding: .5rem .8rem;
+        font-size: 15px;
+    }
+
+    .top-to-bottom-btn {
+        position: fixed;
+        bottom: 12%;
+        right: 5%;
+        display: none;
+        transition: all 1s ease;
+    }
+}
+
+@media only screen and (max-width: 767px) and (min-width: 550px) {
+    .support-section {
+        margin-bottom: 30vh;
+    }
+
+    .support-page-data p {
+        font-size: .9rem;
+    }
+
+    /* ###ABOUT_US### */
+
+    .about-header {
+        margin: 0;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .about-head-section {
+        margin: 1rem auto 0;
+        text-align: start;
+        width: 100%;
+    }
+
+    .about-body {
+        margin-top: 1rem;
+    }
+
+    .about-desktop-btn {
+        display: none;
+    }
+
+    /* ###LOGIN### */
+
+    .login-img {
+        height: 30vh;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .mobile-login-logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    .mobile-login-logo img {
+        height: 5rem;
+    }
+
+    .login-section {
+        height: 100vh;
+        margin-bottom: 20vh;
+    }
+
+    .login-logo img {
+        display: none;
+    }
+
+    .login-data {
+        margin: .5rem auto 0;
+    }
+
+    .login-details-head h1 {
+        margin-bottom: 1.5rem;
+    }
+
+    .keep-check {
+        width: 45%;
+    }
+
+    /* ###SIGNUP### */
+
+    .sign-up-img {
+        background-position: bottom;
+    }
+
+    .sign-up-btn {
+        width: 100%;
+    }
+
+    .sign-up-data {
+        padding: 0;
+    }
+
+    .sign-up-head {
+        width: unset;
+        margin-top: 2rem;
+    }
+
+    .sign-up-details {
+        margin: 2rem 0;
+    }
+
+    .sign_up_logo img {
+        height: 6rem;
+    }
+
+    .sign-up-info {
+        margin-bottom: 1.8rem;
+    }
+
+    /* ###CONTACT_US### */
+
+    .contact-image {
+        display: none;
+    }
+
+    .contact-input {
+        width: 100%;
+    }
+
+    .contact-input input {
+        width: 100%;
+    }
+
+    .contact-input select {
+        width: 100%;
+    }
+
+    .contact-input textarea {
+        width: 100%;
+    }
+
+    .contact-input button {
+        width: 100%;
+    }
+
+    .contact-data-head {
+        width: 100%;
+    }
+
+    .contact-options {
+        width: 100%;
+    }
+
+    .contact-data-head h1 {
+        font-size: 1.2rem;
+    }
+
+    .options {
+        gap: 1rem;
+    }
+}
+
+@media only screen and (max-width: 991px) and (min-width: 768px) {
+    /* ###SIGN_UP### */
+
+    .sign-up-btn {
+        width: 40%;
+    }
+
+    /* ###LOGIN### */
+
+    .keep-check span {
+        font-size: .7rem;
+    }
+
+    .login-row {
+        height: 100vh;
+    }
+
+    .keep-check {
+        width: 50%;
+    }
+
+    /* ###CONTACT_US### */
+
+    .contact-image {
+        display: flex;
+        height: 100%;
+        width: 90%;
+        border-radius: 20px;
+    }
+
+    .contact-image img {
+        height: 23rem;
+        width: 32rem;
+    }
+
+    .contact-data-div {
+        gap: 1rem;
+    }
+
+    .contact-data-head h1 {
+        font-size: 1rem;
+    }
+
+    .contact-options {
+        gap: 1rem;
+    }
+
+    .options {
+        gap: 1rem;
+    }
+
+    .option-img img {
+        height: 2rem;
+    }
+
+    .option-data {
+        font-size: .8rem;
+    }
+}
+
+@media only screen and (max-width: 1199px) and (min-width: 992px) {
+    .contact-data-div {
+        gap: 0.8rem;
+    }
+}
+
+@media only screen and (max-width: 1450px) and (min-width: 1200px) {
+    /* ###LOGIN### */
+
+    .login-row {
+        height: 100vh;
+    }
+
+    .login-data {
+        gap: 2.5rem;
+    }
+
+    .login-details {
+        gap: 2rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* ###SIGNUP### */
+
+    .sign-up-container {
+        display: flex;
+        align-items: center;
+    }
+}

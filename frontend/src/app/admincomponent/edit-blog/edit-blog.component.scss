@@ -1,0 +1,63 @@
+.btn {
+    color: #000;
+    background: #FCDB38;
+    border: none;
+}
+
+.btn:hover {
+    color: #fff;
+    background: #0399FA;
+}
+
+.page-title-box .page-title {
+    font-size: 1.25rem;
+    margin: 0;
+    line-height: 75px;
+    color: #323a46
+}
+
+.page-title-box .page-title-right {
+    float: right;
+    margin-top: 22px
+}
+
+.page-title-box .breadcrumb {
+    padding-top: 5px
+}
+
+@media (max-width: 767.98px) {
+    .page-title-box .page-title {
+        display:block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        line-height: 70px
+    }
+
+    .page-title-box .breadcrumb {
+        display: none
+    }
+}
+
+@media (max-width: 640px) {
+    .page-title-box .page-title-right {
+        display:none
+    }
+}
+
+@media (max-width: 419px) {
+    .page-title-box .breadcrumb {
+        display:none
+    }
+}
+
+@media print {
+    .footer,.left-side-menu,.navbar-custom,.page-title-box,.right-bar {
+        display: none
+    }
+
+    .card-body,.content,.content-page,.right-bar,body {
+        padding: 0;
+        margin: 0
+    }
+}

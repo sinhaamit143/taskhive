@@ -1,0 +1,246 @@
+.project-details {
+    margin-top: 170px;
+    margin-bottom: 80px;
+    overflow: hidden;
+}
+
+.project-details .project-details-heading {
+    font-family: 'Raleway';
+    font-size: 50px;
+    font-weight: 400;
+    line-height: 70px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.project-details .project-details-para {
+    font-family: 'Raleway';
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: justify;
+    margin-bottom: 30px;
+}
+
+.project-details .head-img {
+    width: 26rem;
+    margin-bottom: 70px;
+}
+
+.project-details .head-img2 {
+    display: none;
+}
+
+.our-project-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.project-details .project-details-img {
+    width: 22rem;
+    margin-top: 60px;
+    margin-left: 30px;
+    height: 15rem;
+    object-fit: cover;
+}
+
+.project-details-paras {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 15;
+    line-clamp: 15;
+    overflow: hidden;
+}
+
+
+.blue-btn {
+    color: #fff;
+    background-color: #0399FA;
+    border-color: #0399FA;
+
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: center;
+    width: fit-content;
+    height: fit-content;
+    padding: .5rem 1.5rem;
+}
+
+.blue-btn:hover {
+    color: #fff;
+    background-color: #0399FA;
+    border-color: #0399FA;
+}
+
+.get_in_touch {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+}
+
+@media only screen and (max-width: 379px) and (min-width: 330px) {
+    .project-details {
+        margin-top: 140px;
+        margin-bottom: 100px;
+    }
+
+    .project-details .project-details-heading {
+        font-size: 24px;
+        line-height: 32px;
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+
+    .project-details .project-details-para {
+        font-size: 12px;
+        line-height: 22px;
+        margin-bottom: 16px;
+    }
+
+    .project-details .project-details-img {
+        width: 10.8rem;
+        margin-top: 20px;
+        margin-left: 0px;
+    }
+
+    .project-details .head-img {
+        width: 18rem;
+        margin-left: 40px;
+        display: none;
+    }
+
+    .project-details .head-img2 {
+        display: block;
+        width: 23.1rem;
+    }
+
+}
+
+@media only screen and (max-width: 551px) and (min-width: 280px) {
+    .project-details {
+        margin-top: 130px;
+        margin-bottom: 100px;
+    }
+
+    .project-details .project-details-heading {
+        font-size: 24px;
+        line-height: 32px;
+        margin-bottom: 20px;
+    }
+
+    .project-details .project-details-para {
+        font-size: 12px;
+        line-height: 22px;
+        margin-bottom: 16px;
+    }
+
+    .project-details .project-details-img {
+        width: 10rem;
+        margin-top: 20px;
+        margin-left: 0px;
+    }
+
+    .project-details .head-img {
+        width: 16rem;
+    }
+
+    .get_in_touch {
+        justify-content: start;
+    }
+
+    .get_in_touch_btn {
+        padding: .5rem .8rem;
+        font-size: 15px;
+    }
+
+}
+
+@media only screen and (max-width: 991px) and (min-width: 768px) {
+    .project-details {
+        margin-top: 130px;
+        margin-bottom: 50px;
+    }
+
+    .project-details .project-details-heading {
+        font-size: 28px;
+        line-height: 45px;
+        margin-bottom: 20px;
+    }
+
+    .project-details .project-details-para {
+        font-size: 15px;
+        line-height: 25px;
+        margin-bottom: 20px;
+    }
+
+    .project-details .project-details-img {
+        width: 13.5rem;
+        margin-top: 25px;
+        margin-left: 0px;
+    }
+
+    .project-details .head-img {
+        width: 21rem;
+    }
+}
+
+@media only screen and (max-width: 1199px) and (min-width: 992px) {
+    .project-details {
+        margin-top: 130px;
+        margin-bottom: 50px;
+    }
+
+    .project-details .project-details-heading {
+        font-size: 45px;
+        line-height: 70px;
+        margin-bottom: 35px;
+    }
+
+    .project-details .project-details-para {
+        font-size: 16px;
+        line-height: 27px;
+        margin-bottom: 25px;
+    }
+
+    .project-details .project-details-img {
+        width: 17rem;
+        margin-top: 45px;
+        margin-left: 10px;
+    }
+}
+
+@media only screen and (max-width: 1450px) and (min-width: 1200px) {
+    .project-details {
+        margin-top: 130px;
+        margin-bottom: 50px;
+    }
+
+    .project-details .project-details-heading {
+        font-size: 45px;
+        line-height: 70px;
+        margin-bottom: 35px;
+    }
+
+    .project-details .project-details-para {
+        font-size: 16px;
+        line-height: 27px;
+        margin-bottom: 25px;
+    }
+
+    .project-details .project-details-img {
+        width: 20rem;
+        margin-top: 56px;
+        margin-left: 10px;
+    }
+
+    .project-details .head-img {
+        width: 23rem;
+        margin-bottom: 70px;
+    }
+}
