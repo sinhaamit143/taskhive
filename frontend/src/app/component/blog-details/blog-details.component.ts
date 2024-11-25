@@ -11,7 +11,7 @@ import * as AOS from 'aos';
 })
 export class BlogDetailsComponent implements OnInit {
   blog: any;
-  env = environment.url;  // To access your environment variable for API base URL
+  env = environment.url;
 
   constructor(private route: ActivatedRoute, private _blogService: BlogService) {}
 
@@ -28,7 +28,7 @@ export class BlogDetailsComponent implements OnInit {
     if (blogId) {
       this._blogService.onBlogFindOne(blogId).subscribe(
         (response: any) => {
-          this.blog = response.data;  // Assuming response.data contains the blog object
+          this.blog = response.data;
         },
         (error) => {
           console.error('Error fetching blog data:', error);

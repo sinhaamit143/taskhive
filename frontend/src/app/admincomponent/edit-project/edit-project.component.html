@@ -1,49 +1,61 @@
 <div class="content-page">
-    <div class="content">
-      <!-- Start Content-->
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-            <div class="page-title-box">
-              <div class="page-title-right">
-                <a class="btn btn-primary" routerLink="/projects">Projects</a>
-              </div>
-              <h4 class="page-title">Projects</h4>
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="page-title-box">
+            <div class="page-title-right">
+              <a class="btn btn-primary btn-sm" routerLink="/projects">Projects</a>
             </div>
+            <h4 class="page-title">Edit Project</h4>
           </div>
         </div>
-        
-        <div class="container">
-          <form [formGroup]="myForm" (ngSubmit)="uploadImage()" id="blog_form">
-            <div class="row">
+      </div>
 
-              <div class="form-group col-lg-4">
-                <label for="project_name">Project Name <span class="text-danger">required *</span></label>
-                <input type="text" class="form-control" id="pName" formControlName="pName" required>
-              </div>
+      <div class="container">
+        <form [formGroup]="projectForm" (ngSubmit)="onSubmit()" id="project_form">
+          <div class="row">
 
-              <div class="form-group col-lg-12">
-                <label for="para_1">Project Description First<span class="text-danger">required *</span></label>
-                <textarea class="form-control" id="pDescription" formControlName="pDescription" rows="5"></textarea>
-                <p class="text-danger">Max Character Count : 600 Character </p>
-              </div>
-             
-              <div class="form-group col-lg-4">
-                <label for="project_image">Project Cover Image (required *)</label>
-                <div class="custom-dropzone" ngx-dropzone [accept]="'image/*'" (change)="onSelect($event)">
-                  <ngx-dropzone-label>Drag and drop an image here, or click to select an image</ngx-dropzone-label>
-                  <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" [removable]="true" *ngFor="let f of pImage" [file]="f" (removed)="onRemove(f)">
-                  </ngx-dropzone-image-preview>
-                </div>
-              </div>
-
-              <div class="form-group col-lg-12">
-                <button type="submit" class="btn btn-primary">Update</button>
-              </div>
-              
+            <div class="form-group col-lg-12">
+              <label for="name">Project Name ( <span class="text-danger">required *</span>)</label>
+              <input type="text" class="form-control" id="name" formControlName="name" />
             </div>
-          </form>
-        </div>
-      </div> <!-- container -->
-    </div> <!-- content -->
-  </div>
+
+            <div class="form-group col-lg-12" formArrayName="descriptions" *ngFor="let description of descriptions.controls; let i = index"><br>
+              <label for="description_{{ i }}">Description {{i + 1}} ( <span class="text-danger">required *</span>)</label>
+              <textarea class="form-control" id="description_{{ i }}" formControlName="{{ i }}"  rows="5"></textarea>
+              <p class="text-danger">Max Character Count: 600 Characters</p>
+              <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-secondary me-5" (click)="addDescription()">Add Another Description</button>
+                <button *ngIf="descriptions.length > 1" type="button" class="btn btn-danger" (click)="removeDescription(i)">Remove Description</button>
+              </div><br><br>
+            </div>
+
+            <div class="form-group col-lg-4" formArrayName="images" *ngFor="let imageControl  of imagesArray.controls; let i = index">
+              <label for="project_image_{{ i }}">Project Cover Image ( <span class="text-danger">required *</span>)</label>
+              <input type="file" class="form-control" id="project_image_{{ i }}" formControlName="{{ i }}" (change)="onFileSelect($event, i)" accept="image/*" required><br>
+              <div class="preview-image" *ngIf="imagesArray.at(i).value">
+                <img 
+                  [src]="'http://localhost:5000/file/download/'+imagesArray.at(i).value" 
+                  class="rounded-3" 
+                  alt="Current Project Image" 
+                  style="width: 85px;"
+                /><br><br>
+              </div>
+              <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-secondary me-5" (click)="addImage()">Add Another Image</button>
+                <button *ngIf="imagesArray.length > 1" type="button" class="btn btn-danger" (click)="removeImage(i)">Remove Image</button>
+              </div> <br><br>
+            </div>
+            
+            <hr>
+            <div class="d-flex justify-content-center">
+              <button type="submit" class="btn btn-primary" >Update Project</button>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div> 
+  </div> 
+</div>

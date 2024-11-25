@@ -49,7 +49,7 @@ const routes: Routes = [
     component: BlogDetailsComponent 
   },
   { 
-    path: 'project-details', 
+    path: 'project/:id', 
     component: ProjectDetailsComponent 
   }
 ];

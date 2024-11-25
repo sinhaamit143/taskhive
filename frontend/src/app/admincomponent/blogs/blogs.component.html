@@ -54,7 +54,7 @@
                         <img src="{{ env }}/file/download/{{data.image}}"alt="user"width="85"class="rounded-3"/>
                       </td>
                       <td>
-                        <span [title]="data.description">{{data.description}}</span>
+                        <span class="truncate" [attr.title]="data.description">{{data.description}}</span>
                       </td>
                       <td>{{ data.created_at }}</td>
                       <td>{{ data.updated_at }}</td>

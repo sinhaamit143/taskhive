@@ -1,147 +1,161 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpEventType } from '@angular/common/http';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ProjectService } from '../../services/project/project.service';
 import { FileService } from '../../services/file/file.service';
 import { environment } from '../../../environments/environment';
 import { ActivatedRoute } from '@angular/router';
-
-
 @Component({
   selector: 'app-edit-project',
   templateUrl: './edit-project.component.html',
   styleUrl: './edit-project.component.scss'
 })
 export class EditProjectComponent implements OnInit {
+  projectForm: FormGroup;
+  images: File[] = [];
   env: string = environment.url;
   selectedProject: any = {};
-  myForm!: FormGroup;
-  pImage: File[] = [];
+  image: File[] = [];
 
   constructor(
-    private _projectService: ProjectService,
+    private projectService: ProjectService,
     private fb: FormBuilder,
     private fileServ: FileService,
+    private router: Router,
     private route: ActivatedRoute
   ) {
-    this.myForm = this.fb.group({
-      pImage: [null, Validators.required],
-      pName: ['', Validators.required],
-      pDescription: ['', Validators.required],
+    this.env = environment.url;
+    this.projectForm = this.fb.group({
+      name: ['', Validators.required],
+      descriptions: this.fb.array([]),
+      images: this.fb.array([]),
     });
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    const fetchedData = {
+      "name": '',
+      "descriptions": [''],
+      "images": [''],
+    };
     const projectId = this.route.snapshot.paramMap.get('id');
     if (projectId) {
       this.fetchProjectById(projectId);
+      this.setDescriptions(this.selectedProject.descriptions);
+      this.setImages(this.selectedProject.images); 
     } else {
-      console.error('project ID is undefined on initialization');
-      alert('Error: project ID is undefined on initialization');
+      console.error('Project ID is undefined on initialization');
+      alert('Error: Project ID is undefined on initialization');
     }
+    this.projectForm.patchValue({ name: fetchedData.name });
   }
-
+  
   fetchProjectById(id: string) {
-    this._projectService.get(`projects/${id}`, {}).subscribe(
-      (res) => {
-        if (res && res.data && res.data._id) {
+    this.projectService.get(`projects/${id}`, {}).subscribe(
+      (res: any) => {
+        if (res?.data) {
           this.selectedProject = res.data;
-          
-          // Convert backslashes to forward slashes in pImage path if any
-          if (this.selectedProject.pImage) {
-            this.selectedProject.pImage = this.selectedProject.pImage.replace(/\\/g, '/');
-          }
-
-          // Patch the form with project data
-          this.populateForm();
+          this.projectForm.patchValue({ name: this.selectedProject.name });
+          const descriptionsControl = this.projectForm.get('descriptions') as FormArray;
+          this.selectedProject.descriptions.forEach((desc: string) => {
+            descriptionsControl.push(this.fb.control(desc, Validators.required));
+          });
+          const imagesControl = this.projectForm.get('images') as FormArray;
+          this.selectedProject.images.forEach((img: string) => {
+            imagesControl.push(this.fb.control(`${img}`));
+          });
         } else {
-          console.error('project data does not contain an _id:', res);
-          alert('Error: project data is missing an ID.');
+          console.error('Project data not found:', res);
+          alert('Error: Project data not found.');
         }
       },
       (error) => {
-        console.error(`Error fetching project with ID ${id}:`, error);
-        alert(`Error fetching project: ${error.message}`);
+        alert('Error fetching project data.');
+        console.error('Error fetching project:', error);
       }
     );
   }
+  
+  get descriptions() {
+    return this.projectForm.get('descriptions') as FormArray;
+  }
+  
+  get imagesArray() {
+    return this.projectForm.get('images') as FormArray;
+  }
 
-  populateForm() {
-    this.myForm.patchValue({
-      pName: this.selectedProject.pName,
-      pDescription: this.selectedProject.pDescription,
-      pImage: null // Set pImage to null initially
+  setDescriptions(descriptions: string[]) {
+    descriptions.forEach(description => {
+      this.descriptions.push(this.fb.control(description, Validators.required));
     });
   }
 
-  handleFileInput(event: any) {
-    this.selectedProject.pImage = event.target.files[0];
+  setImages(images: string[]) {
+    images.forEach(image => {
+      this.imagesArray.push(this.fb.control(image, Validators.required));
+    });
   }
-
-  onSelect(event: any): void {
-    const file: File = event.addedFiles[0];
+  
+  addDescription() {
+    this.descriptions.push(this.fb.control('', Validators.required));
+  }
+  
+  removeDescription(index: number) {
+    this.descriptions.removeAt(index);
+  }
+  
+  addImage() {
+    this.imagesArray.push(this.fb.control('', Validators.required));
+  }
+  
+  removeImage(index: number) {
+    this.imagesArray.removeAt(index);
+  }
+  
+  onFileSelect(event: any, index: number) {
+    const file = event.target.files[0];
     if (file) {
-      this.pImage = [file];
-      this.myForm.patchValue({ pImage: file });
-      this.myForm.get('pImage')?.updateValueAndValidity();
+      this.images[index] = file;
+      const imagesControl = this.projectForm.get('images') as FormArray;
+      imagesControl.controls[index].setValue(file);
     }
   }
 
-  onRemove(file: File): void {
-    if (this.pImage.includes(file)) {
-      this.pImage = [];
-      this.myForm.patchValue({ pImage: null });
-      this.myForm.get('pImage')?.updateValueAndValidity();
-    }
+  async uploadImages(): Promise<string[]> {
+    console.log(this.images);
+    const uploadTasks = this.images.map((file) =>
+      this.fileServ.uploadFile(file).toPromise().then((res: any) => {
+        if (res.type === HttpEventType.Response && res.body?.file) {
+          return res.body.file.path.replace(/\\/g, '/'); 
+        }
+        return '';
+      })
+    );
+    return Promise.all(uploadTasks);
   }
-
-  uploadImage() {
-    if (this.pImage.length === 0 && !this.myForm.value.pImage) {
-      alert('Please select an pImage');
+  
+  async onSubmit() {
+    if (this.projectForm.invalid) {
+      alert('Please complete all required fields.');
       return;
     }
-
-    // Patch the selected project with the form values
-    this.selectedProject.pName = this.myForm.value.pName;
-    this.selectedProject.pDescription = this.myForm.value.pDescription;
-
-    // If there is a new pImage, upload it
-    if (this.pImage.length > 0) {
-      this.fileServ.uploadFile(this.pImage[0]).subscribe(
-        (res: any) => {
-          if (res.type === HttpEventType.Response) {
-            const body: any = res.body;
-            if (body && body.file && body.file.path) {
-              const imagePath = body.file.path.replace(/\\/g, '/');  // Ensure forward slashes
-              this.selectedProject.pImage = imagePath;
-              console.log('Image uploaded successfully, updating project...');
-              this.updateProject();
-            } else {
-              console.error('Image upload response does not contain a valid path');
-              alert('Error: Image upload failed.');
-            }
+    const imagePaths = await this.uploadImages();
+        imagePaths.forEach((path) => {
+          if (path) { 
+            this.imagesArray.push(this.fb.control(path));
           }
-        },
-        (error) => {
-          console.error('Error uploading image:', error);
-          alert(`Error uploading image: ${error.message}`);
-        }
-      );
-    } else {
-      // If no new image is selected, directly update the project
-      this.updateProject();
-    }
-  }
-
-  updateProject() {
-    this._projectService.put('projects', this.selectedProject._id, this.selectedProject).subscribe(
-      () => {
-        console.log('project updated successfully');
-        alert('project updated successfully');
+    });
+    const formData = this.projectForm.value;
+    formData.images = formData.images.filter((obj: {}) => Object.keys(obj).length > 0);
+    this.projectService.put('projects', this.selectedProject._id, formData).subscribe(
+      (response) => {
+        alert('Project updated successfully!');
+        this.router.navigate(['/projects']);
       },
       (error) => {
         console.error('Error updating project:', error);
-        alert(`Error updating project: ${error.message}`);
+        alert('Error updating project.');
       }
     );
   }

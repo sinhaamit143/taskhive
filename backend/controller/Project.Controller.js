@@ -35,44 +35,72 @@ module.exports = {
     get: async (req, res, next) => {
         try {
             const { id } = req.params;
-
-            if (!id) throw createError.BadRequest('Invalid Parameters');
-
+    
+            // Validate the ObjectId
+            if (!mongoose.Types.ObjectId.isValid(id)) {
+                return res.status(400).json({ 
+                    success: false, 
+                    message: 'Invalid Project ID' 
+                });
+            }
+    
+            // Fetch project details
             const result = await Model.findById(new mongoose.Types.ObjectId(id));
-            if (!result) throw createError.NotFound(`No ${ModelName} Found`);
-
+            if (!result) {
+                return res.status(404).json({ 
+                    success: false, 
+                    message: 'Project not found' 
+                });
+            }
+    
             res.json({ success: true, data: result });
         } catch (error) {
-            next(error);
+            console.error('Error in get project:', error);
+            next(error); // Pass the error to error middleware
         }
     },
+    
 
     publicGet: async (req, res, next) => {
         try {
             const { id } = req.params;
-
-            if (!id) throw createError.BadRequest('Invalid Parameters');
-
+    
+            // Validate the ObjectId
+            if (!mongoose.Types.ObjectId.isValid(id)) {
+                return res.status(400).json({ 
+                    success: false, 
+                    message: 'Invalid Project ID' 
+                });
+            }
+    
+            // Fetch project details with lookup
             const result = await Model.aggregate([
-                { $match: { _id: mongoose.Types.ObjectId(id) } },
-                { 
+                { $match: { _id: new mongoose.Types.ObjectId(id) } },
+                {
                     $lookup: {
                         from: 'users',
                         localField: 'created_by',
                         foreignField: '_id',
                         as: 'created_by'
-                    } 
+                    }
                 },
                 { $unwind: { path: '$created_by', preserveNullAndEmptyArrays: true } }
             ]);
-
-            if (!result) throw createError.NotFound(`No ${ModelName} Found`);
-
-            res.json({ success: true, data: result.pop() });
+    
+            if (!result || result.length === 0) {
+                return res.status(404).json({ 
+                    success: false, 
+                    message: 'Project not found' 
+                });
+            }
+    
+            res.json({ success: true, data: result[0] });
         } catch (error) {
-            next(error);
+            console.error('Error in publicGet project:', error);
+            next(error); // Pass the error to error middleware
         }
     },
+    
 
     list: async (req, res, next) => {
         try {

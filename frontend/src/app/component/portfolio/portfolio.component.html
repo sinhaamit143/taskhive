@@ -4,49 +4,29 @@
         <h2 class="gallery-heading">Gallery</h2>
 
 <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-            <div class="gallery-slid-show">
+            <div class="gallery-slid-show" *ngFor="let project of visibleProjects">
               <div class="row">
 
                 <div class="col-md-3 col-sm-3">
                   <div class="gallery-image" id="main">
-                      <img class="gallery-img" src="https://taskhive.co.in/uploads/New1712856667229.jpg" style="filter: unset;">
+                      <img class="gallery-img" src="{{getImageUrl(project.images[0])}}" alt="Project Image" style="filter: unset;">
                   </div>
                 </div>
 
-                <div class="col-md-9 col-sm-9 slider" style="display: unset; opacity: 1;">  
+                <div class="col-md-9 col-sm-9 slider" style="display: unset; opacity: 1;" *ngIf="project">  
                   <div class="gallery-content">
                     <div class="row">
 
                       <div class="col-12">
-                        <h4 class="g-content-head">Web development</h4>
+                        <h4 class="g-content-head">{{project.name}}</h4>
                       </div>
 
-                      <div class="col-md-4 col-sm-4 col-6">
-                        <img class="g-content-img margin-img" src="https://taskhive.co.in/uploads/New1712857018221.jpg">
-                      </div>
-
-                      <div class="col-md-4 col-sm-4 col-6">
-                        <img class="g-content-img margin-img" src="https://taskhive.co.in/uploads/New1712857018699.png">
-                      </div>
-
-                      <div class="col-md-4 col-sm-4 col-6">
-                        <img class="g-content-img margin-img" src="https://taskhive.co.in/uploads/New1712857018221.jpg">
-                      </div>
-
-                      <div class="col-md-4 col-sm-4 col-6">
-                        <img class="g-content-img margin-img" src="https://taskhive.co.in/uploads/New1712857018699.png">
-                      </div>
-
-                      <div class="col-md-4 col-sm-4 col-6">
-                        <img class="g-content-img margin-img" src="https://taskhive.co.in/uploads/New1712857018221.jpg">
-                      </div>
-
-                      <div class="col-md-4 col-sm-4 col-6">
-                        <img class="g-content-img margin-img" src="https://taskhive.co.in/uploads/New1712857018699.png">
+                      <div class="col-md-4 col-sm-4 col-6" *ngFor="let image of project.images.slice(1)">
+                        <img class="g-content-img margin-img" src="{{getImageUrl(image)}}" alt="Project Image">
                       </div>
 
                       <div class="col-12">
-                        <a class="g-content-para" routerLink="/project-details">Read More</a>
+                        <a class="g-content-para" [routerLink]="['/project', project._id]">Read More</a>
                       </div>
 
                     </div>
@@ -55,166 +35,7 @@
 
               </div>
             </div>
-
 <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-            <div class="gallery-slid-show">
-              <div class="row">
-
-                <div class="col-md-3 col-sm-3">
-                  <div class="gallery-image" id="main">
-                    <img class="gallery-img" src="https://taskhive.co.in/uploads/New1712856667229.jpg" style="filter: unset;">
-                  </div>
-                </div>
-
-                <div class="col-md-9 col-sm-9 slider" style="display: unset; opacity: 1;">
-                  <div class="gallery-content">
-                    <div class="row">
-
-                      <div class="col-12">
-                        <h4 class="g-content-head">Taskhive</h4>
-                      </div>
-
-                      <div class="col-md-4 col-sm-4 col-6">
-                        <img class="g-content-img margin-img" src="https://taskhive.co.in/uploads/New1712932224372.jpg">
-                      </div>
-
-                      <div class="col-md-4 col-sm-4 col-6">
-                        <img class="g-content-img margin-img" src="https://taskhive.co.in/uploads/New1712932224845.jpg">
-                      </div>
-
-                      <div class="col-md-4 col-sm-4 col-6">
-                        <img class="g-content-img margin-img" src="https://taskhive.co.in/uploads/New1712932224372.jpg">
-                      </div>
-                      
-                      <div class="col-md-4 col-sm-4 col-6">
-                        <img class="g-content-img margin-img" src="https://taskhive.co.in/uploads/New1712932224845.jpg">
-                      </div>
-
-                      <div class="col-md-4 col-sm-4 col-6">
-                        <img class="g-content-img margin-img" src="https://taskhive.co.in/uploads/New1712932224372.jpg">
-                      </div>
-
-                      <div class="col-md-4 col-sm-4 col-6">
-                        <img class="g-content-img margin-img" src="https://taskhive.co.in/uploads/New1712932224845.jpg">
-                      </div>
-
-                      <div class="col-12">
-                        <a class="g-content-para" routerLink="/project-details">Read More</a>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-            <div class="gallery-slid-show">
-              <div class="row">
-
-                <div class="col-md-3 col-sm-3">
-                  <div class="gallery-image" id="main">
-                    <img class="gallery-img" src="https://taskhive.co.in/uploads/New1712932412297.jpg" style="filter: unset;">
-                  </div>
-                </div>
-
-                <div class="col-md-9 col-sm-9 slider" style="display: unset; opacity: 1;"> 
-                  <div class="gallery-content">
-                    <div class="row">
-
-                      <div class="col-12">
-                        <h4 class="g-content-head">Lorem Ipsum</h4>
-                      </div>
-
-                      <div class="col-md-4 col-sm-4 col-6">
-                        <img class="g-content-img margin-img" src="https://taskhive.co.in/uploads/New1712932412245.jpg">
-                      </div>
-
-                      <div class="col-md-4 col-sm-4 col-6">
-                        <img class="g-content-img margin-img" src="https://taskhive.co.in/uploads/New1712932412974.jpg">
-                      </div>
-
-                      <div class="col-md-4 col-sm-4 col-6">
-                        <img class="g-content-img margin-img" src="https://taskhive.co.in/uploads/New1712932224845.jpg">
-                      </div>
-
-                      <div class="col-md-4 col-sm-4 col-6">
-                        <img class="g-content-img margin-img" src="https://taskhive.co.in/uploads/New1712932412974.jpg">
-                      </div>
-
-                      <div class="col-md-4 col-sm-4 col-6">
-                        <img class="g-content-img margin-img" src="https://taskhive.co.in/uploads/New1712932224372.jpg">
-                      </div>
-
-                      <div class="col-md-4 col-sm-4 col-6">
-                        <img class="g-content-img margin-img" src="https://taskhive.co.in/uploads/New1712932412974.jpg">
-                      </div>
-
-                      <div class="col-12">
-                        <a class="g-content-para" routerLink="/project-details">Read More</a>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-            <div class="gallery-slid-show">
-              <div class="row">
-
-                <div class="col-md-3 col-sm-3">
-                  <div class="gallery-image" id="main">
-                    <img class="gallery-img" src="https://taskhive.co.in/uploads/New1712997615623.jpg" style="filter: unset;">
-                  </div>
-                </div>
-
-                <div class="col-md-9 col-sm-9 slider" style="display: unset; opacity: 1;">
-                  <div class="gallery-content">
-                    <div class="row">
-
-                      <div class="col-12">
-                        <h4 class="g-content-head">NewProject</h4>
-                      </div>
-
-                      <div class="col-md-4 col-sm-4 col-6">
-                        <img class="g-content-img margin-img" src="https://taskhive.co.in/uploads/New1712997615296.jpg">
-                      </div>
-
-                      <div class="col-md-4 col-sm-4 col-6">
-                        <img class="g-content-img margin-img" src="https://taskhive.co.in/uploads/New1712997615412.jpg">
-                      </div>
-                      
-                      <div class="col-md-4 col-sm-4 col-6">
-                        <img class="g-content-img margin-img" src="https://taskhive.co.in/uploads/New1712932224372.jpg">
-                      </div>
-
-                      <div class="col-md-4 col-sm-4 col-6">
-                        <img class="g-content-img margin-img" src="https://taskhive.co.in/uploads/New1712932412245.jpg">
-                      </div>
-
-                      <div class="col-md-4 col-sm-4 col-6">
-                        <img class="g-content-img margin-img" src="https://taskhive.co.in/uploads/New1712932224845.jpg">
-                      </div>
-
-                      <div class="col-md-4 col-sm-4 col-6">
-                        <img class="g-content-img margin-img" src="https://taskhive.co.in/uploads/New1712932412974.jpg">
-                      </div>
-                      
-                      <div class="col-12">
-                        <a class="g-content-para" routerLink="/project-details">Read More</a>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
       </div>
     </div>
   </div>

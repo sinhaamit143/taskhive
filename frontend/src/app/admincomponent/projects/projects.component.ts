@@ -32,9 +32,9 @@ export class ProjectsComponent {
   ) {
     this.env = environment.url;
     this.myForm = this.fb.group({
-      pImage: [null, Validators.required],
-      pName: ['', Validators.required],
-      pDescription: ['', Validators.required],
+      name: ['', Validators.required],
+      descriptions: this.fb.array([]),
+      images: this.fb.array([])
     });
   }
 
@@ -46,10 +46,9 @@ export class ProjectsComponent {
     this._projectService.get('projects', {}).subscribe((res: any) => {
       this.getData = res.data.map((project: any) => ({
         ...project,
-        imageUrl: project.images?.[0] ? `${this.env}/file/download/${project.images[0]}` : 'assets/default-image.png',
         description: project.descriptions?.[0] || 'No description available',
       }));
-      console.log(this.getData.length)
+      console.log(this.getData)
     });
   }
 

@@ -12,77 +12,108 @@ import { HttpEventType } from '@angular/common/http';
   styleUrls: ['./add-project.component.scss'],
 })
 export class AddProjectComponent implements OnInit {
-  myForm!: FormGroup;
-  isLoading = false;
-  projects: any[] = [];
+  projectForm: FormGroup;
   images: File[] = [];
 
   constructor(
     private fb: FormBuilder,
-    private fileServ: FileService,
-    private _projectService: ProjectService,
-    private as: AlertService,
-    private route: Router
-  ) {}
-
-  ngOnInit() {
-    this.initializeForm();
-  }
-
-  initializeForm(): void {
-    this.myForm = this.fb.group({
+    private projectService: ProjectService,
+    private fileService: FileService,
+    private alertService: AlertService,
+    private router: Router
+  ) {
+    this.projectForm = this.fb.group({
       name: ['', Validators.required],
-      descriptions: this.fb.array([this.createDescriptionField()], Validators.required), 
-      images: this.fb.array([], Validators.required), 
+      descriptions: this.fb.array([]),
+      images: this.fb.array([])
     });
   }
 
-  createDescriptionField(): FormGroup {
-    return this.fb.group({
-      text: ['', [Validators.required, Validators.maxLength(600)]],
-    });
+  ngOnInit(): void {
+    const fetchedData = {
+      "name": '',
+      "descriptions": [''],
+      "images": [''],
+    };
+
+    this.projectForm.patchValue({ name: fetchedData.name });
+
+    this.setDescriptions(fetchedData.descriptions);
+    this.setImages(fetchedData.images);
+    console.log(this.projectForm.value);
+    console.log('Descriptions Controls:', this.descriptions.controls);
+    console.log('Images Controls:', this.imagesArray.controls);
   }
 
+  
   get descriptions(): FormArray {
-    return this.myForm.get('descriptions') as FormArray;
+    return this.projectForm.get('descriptions') as FormArray;
   }
 
+  
   get imagesArray(): FormArray {
-    return this.myForm.get('images') as FormArray;
+    return this.projectForm.get('images') as FormArray;
   }
 
-  addDescription(): void {
-    this.descriptions.push(this.createDescriptionField());
+  setDescriptions(descriptions: string[]) {
+    descriptions.forEach(description => {
+      this.descriptions.push(this.fb.control(description, Validators.required));
+    });
   }
 
-  removeDescription(index: number): void {
+  setImages(images: string[]) {
+    images.forEach(image => {
+      this.imagesArray.push(this.fb.control(image, Validators.required));
+      console.log(image);
+    });
+  }
+
+  addDescription() {
+    this.descriptions.push(this.fb.control('', Validators.required));
+    console.log('After Adding Description:', this.projectForm.value);
+    console.log('Descriptions Controls:', this.descriptions.controls);
+  }
+
+  removeDescription(index: number) {
     this.descriptions.removeAt(index);
+    console.log('After Removing Description:', this.projectForm.value);
+    console.log('Descriptions Controls:', this.descriptions.controls);
   }
 
-  onFileSelect(event: any): void {
+
+  onFileSelect(event: any, index: number): void {
     const fileInput = event.target;
     if (fileInput && fileInput.files && fileInput.files[0]) {
-      const file: File = fileInput.files[0]; // Access the first file
-      this.images.push(file); // Add file to the local images array
+      const file: File = fileInput.files[0]; 
+      this.images[index] = file; 
+      this.imagesArray.at(index).setValue(file.name);
       console.log('Selected file:', file);
+      console.log('Images Array After File Select:', this.imagesArray.controls);
     } else {
       console.error('No file selected or invalid file input.');
     }
   }
-  
 
-  removeFile(index: number): void {
-    this.images.splice(index, 1); // Remove file from the images array
-    this.imagesArray.removeAt(index); // Remove file from the form array
+  
+  addImage() {
+    this.imagesArray.push(this.fb.control('', Validators.required));
+    console.log('After Adding Image:', this.projectForm.value);
+    console.log('Images Controls:', this.imagesArray.controls);
+    console.log(this.imagesArray.value);
   }
-  
-  
 
-  uploadImages(): Promise<string[]> {
+  removeImage(index: number) {
+    this.images.splice(index, 1); 
+    this.imagesArray.removeAt(index); 
+    console.log('After Removing Image:', this.projectForm.value);
+    console.log('Images Controls:', this.imagesArray.controls);
+  }
+
+  async uploadImages(): Promise<string[]> {
     const uploadTasks = this.images.map((file) =>
-      this.fileServ.uploadFile(file).toPromise().then((res: any) => {
+      this.fileService.uploadFile(file).toPromise().then((res: any) => {
         if (res.type === HttpEventType.Response && res.body?.file) {
-          return res.body.file.path.replace(/\\/g, '/'); // Normalize file path
+          return res.body.file.path.replace(/\\/g, '/'); 
         }
         return '';
       })
@@ -91,46 +122,47 @@ export class AddProjectComponent implements OnInit {
     return Promise.all(uploadTasks);
   }
 
-  async collectAndSubmitForm(): Promise<void> {
-    if (this.myForm.valid) {
+  async onSubmit() {
+    if (this.projectForm.valid) {
+      console.log('Form on Submit:', this.projectForm.value);
       try {
-
         const imagePaths = await this.uploadImages();
 
-
+        
         this.imagesArray.clear();
-        imagePaths.forEach((path) =>
-          this.imagesArray.push(this.fb.control(path))
-        );
-
-        const formData = this.myForm.value;
-
-
-        const result = await this._projectService.post('projects', formData).toPromise();
+        imagePaths.forEach((path) => {
+          if (path) { 
+            this.imagesArray.push(this.fb.control(path));
+          }
+        });
 
         
-        this.as.successToast('Project created successfully');
-        this.route.navigate(['/projects']);
+        const formData = this.projectForm.value;
+        console.log(formData)
+        console.log(typeof formData);
+       
+        const result = await this.projectService.post('projects', formData).toPromise();
+        
+        this.alertService.successToast('Project created successfully');
+        alert("Project created successfully");
+        this.router.navigate(['/projects']);
         this.resetForm();
 
         console.log('Project created:', result);
       } catch (error) {
-        
-        this.as.errorToast('Error submitting the project');
-        console.error('Error in collectAndSubmitForm:', error);
+        this.alertService.errorToast('Error submitting the project');
+        console.error('Error in onSubmit:', error);
       }
     } else {
-      
-      this.as.errorToast('Please complete all required fields.');
+      this.alertService.errorToast('Please complete all required fields.');
+      console.error('Form is invalid:', this.projectForm.value);
     }
   }
 
   resetForm(): void {
-    this.myForm.reset();
-    this.images = [];
-    while (this.descriptions.length > 1) {
-      this.descriptions.removeAt(1);
-    }
-    this.descriptions.at(0).reset(); 
+    this.projectForm.reset();
+    this.images = []; 
+    this.imagesArray.clear(); 
+    this.descriptions.clear();
   }
 }

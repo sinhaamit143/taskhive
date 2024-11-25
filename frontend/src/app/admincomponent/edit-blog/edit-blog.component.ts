@@ -22,6 +22,7 @@ export class EditBlogComponent implements OnInit {
     private _blogService: ApiService,
     private fb: FormBuilder,
     private fileServ: FileService,
+    private router: Router,
     private route: ActivatedRoute
   ) {
     this.myForm = this.fb.group({
@@ -47,12 +48,14 @@ export class EditBlogComponent implements OnInit {
         if (res && res.data && res.data._id) {
           this.selectedBlog = res.data;
           
-          // Convert backslashes to forward slashes in image path if any
-          if (this.selectedBlog.image) {
+          
+          if (this.selectedBlog.image && !this.selectedBlog.image.startsWith('http')) {
             this.selectedBlog.image = this.selectedBlog.image.replace(/\\/g, '/');
           }
+          console.log('Selected Blog Image:', this.selectedBlog.image);
 
-          // Patch the form with blog data
+
+          
           this.populateForm();
         } else {
           console.error('Blog data does not contain an _id:', res);
@@ -70,7 +73,7 @@ export class EditBlogComponent implements OnInit {
     this.myForm.patchValue({
       title: this.selectedBlog.title,
       description: this.selectedBlog.description,
-      image: null // Set image to null initially
+      image: null
     });
   }
 
@@ -96,25 +99,24 @@ export class EditBlogComponent implements OnInit {
   }
 
   uploadImage() {
-    if (this.image.length === 0 && !this.myForm.value.image) {
+    
+    if (this.image.length === 0 && !this.selectedBlog.image) {
       alert('Please select an image');
       return;
     }
-
-    // Patch the selectedBlog with the form values
+  
+    
     this.selectedBlog.title = this.myForm.value.title;
     this.selectedBlog.description = this.myForm.value.description;
-
-    // If there is a new image, upload it
+  
     if (this.image.length > 0) {
       this.fileServ.uploadFile(this.image[0]).subscribe(
         (res: any) => {
           if (res.type === HttpEventType.Response) {
             const body: any = res.body;
             if (body && body.file && body.file.path) {
-              const imagePath = body.file.path.replace(/\\/g, '/');  // Ensure forward slashes
+              const imagePath = body.file.path.replace(/\\/g, '/'); 
               this.selectedBlog.image = imagePath;
-              alert("Image uploaded successfully, updating blog...")
               this.updateBlog();
             } else {
               console.error('Image upload response does not contain a valid path');
@@ -128,16 +130,17 @@ export class EditBlogComponent implements OnInit {
         }
       );
     } else {
-      // If no new image is selected, directly update the blog
+      
       this.updateBlog();
     }
   }
+  
 
   updateBlog() {
     this._blogService.put('blogs', this.selectedBlog._id, this.selectedBlog).subscribe(
       () => {
-        console.log('Blog updated successfully');
         alert('Blog updated successfully');
+        this.router.navigate(['/blogs']);
       },
       (error) => {
         console.error('Error updating blog:', error);

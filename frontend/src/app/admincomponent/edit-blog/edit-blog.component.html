@@ -15,7 +15,7 @@
             <div class="container">
                 <form [formGroup]="myForm" (ngSubmit)="uploadImage()" id="blog_form">
                     <div class="row">
-                        <div class="form-group col-lg-4">
+                        <div class="form-group col-lg-12">
                             <label for="title">Project Name ( <span class="text-danger">required *</span>)</label>
                             <input type="text" class="form-control" id="title" formControlName="title" required>
                         </div>
@@ -24,8 +24,11 @@
                             <textarea class="form-control" id="description" formControlName="description" rows="5" required></textarea>
                             <p class="text-danger">Max Character Count: 600 Characters</p>
                         </div>
-                        <div class="form-group col-lg-12" *ngIf="selectedBlog.image">
-                            <img style="width: 200px; height: 200px;" [src]="env + selectedBlog.image" alt="Current Blog Image">
+                        <div class="preview-image" *ngIf="selectedBlog.image">
+                            <img 
+                            style="width: 200px; height: 200px;" 
+                            [src]="(selectedBlog.image.startsWith('http') || selectedBlog.image.startsWith('/')) ? selectedBlog.image : env + '/'  + selectedBlog.image" 
+                            alt="Current Blog Image">
                         </div>
                         <div class="form-group col-lg-4">
                             <label for="image">Project Cover Image ( <span class="text-danger">Change Image If Required *</span>)</label>
@@ -33,10 +36,10 @@
                                 <ngx-dropzone-label>Drag and drop an image here, or click to select an image</ngx-dropzone-label>
                                 <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" [removable]="true" *ngFor="let f of image" [file]="f" (removed)="onRemove(f)">
                                 </ngx-dropzone-image-preview>
-                            </div>
+                            </div><br>
                         </div>
-
-                        <div class="form-group col-lg-12">
+                        <hr>
+                        <div class="d-flex justify-content-center">
                             <button type="submit" class="btn btn-primary">Update</button>
                         </div>
                     </div>

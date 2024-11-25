@@ -48,11 +48,20 @@
                     <span [title]="data.name">{{data.name}}</span>
                   </td>
                   <td>
-                    <img src="{{ env }}/file/download/{{data.image}}"alt="user"width="85"class="rounded-3"/>
+                    <ngb-carousel>
+                      <ng-template ngbSlide *ngFor="let image of data.images">
+                        <img 
+                          src="{{ env }}/file/download/{{ image }}" 
+                          alt="Project Image" 
+                          class="d-block w-100 rounded-3" 
+                          style="height: 100px; object-fit: cover;"
+                        />
+                      </ng-template>
+                    </ngb-carousel>
                   </td>
                   <td>
-                    <span [title]="data.pDescription">{{data.descriptions}}</span>
-                  </td>
+                    <span class="truncate" [attr.title]="data.descriptions">{{ data.descriptions }}</span>
+                  </td>                  
                   <td>{{ data.created_at }}</td>
                   <td>{{ data.updated_at }}</td>
                   <td>
